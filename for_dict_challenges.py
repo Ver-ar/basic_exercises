@@ -1,3 +1,6 @@
+from collections import Counter
+
+print("Задание №1\n")
 # Задание 1
 # Дан список учеников, нужно посчитать количество повторений каждого имени ученика
 # Пример вывода:
@@ -12,8 +15,19 @@ students = [
     {'first_name': 'Маша'},
     {'first_name': 'Петя'},
 ]
-# ???
+names = []
+for people in students:
+    names.append(people['first_name'])
 
+count = Counter(names)
+counter_name_1 = count['Вася']
+counter_name_2 = count['Маша']
+counter_name_3 = count['Петя']
+
+print(f"Вася: {counter_name_1}\nМаша: {counter_name_2}\nПетя: {counter_name_3}")
+
+
+print("______________________\n\nЗадание №2\n")
 
 # Задание 2
 # Дан список учеников, нужно вывести самое часто повторящееся имя
@@ -26,8 +40,21 @@ students = [
     {'first_name': 'Маша'},
     {'first_name': 'Оля'},
 ]
-# ???
+names = []
+for people in students:
+    names.append(people['first_name'])
 
+names_str=','.join(names)
+
+words = names_str.split(',')
+
+most_use_name = Counter(words).most_common(1)
+for name in most_use_name:
+    use_name = name[0]
+print(f"Самое частое имя среди учеников: {use_name}")
+
+
+print("______________________\n\nЗадание №3\n")
 
 # Задание 3
 # Есть список учеников в нескольких классах, нужно вывести самое частое имя в каждом классе.
@@ -51,7 +78,26 @@ school_students = [
         {'first_name': 'Саша'},
     ],
 ]
-# ???
+
+names = []
+a=0
+def find_name_in_class():
+    names = []
+    for students in school_class:
+        names.append(students['first_name'])
+        names_str=','.join(names)
+        words = names_str.split(',')
+        most_use_name = Counter(words).most_common(1)
+        for name in most_use_name:
+            use_name = name[0]
+    return (use_name)
+    
+for school_class in school_students:
+    a+=1
+    c = find_name_in_class()
+    print(f"Самое частое имя в классе {a}: {c}")
+
+print("______________________\n\nЗадание №4\n")
 
 
 # Задание 4
@@ -72,7 +118,12 @@ is_male = {
     'Миша': True,
     'Даша': False,
 }
-# ???
+
+for name in school:
+    if is_male[name]:
+        print (f"{name}, пол: мужской")
+    else:
+        print (f"{name}, пол: женский")
 
 
 # Задание 5
