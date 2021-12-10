@@ -119,12 +119,25 @@ is_male = {
     'Даша': False,
 }
 
-for name in school:
-    if is_male[name]:
-        print (f"{name}, пол: мужской")
-    else:
-        print (f"{name}, пол: женский")
+def count_males_in_school(school_class):
+    count_girls = 0
+    count_boys = 0
+    for name in school_class['students']:
+        real_name = name['first_name']
+        if is_male[real_name]:
+            count_boys+=1
+        else:
+            count_girls+=1
+    return(count_boys,count_girls)
+    
+        
+for school_class in school:
+    boys, girls = count_males_in_school(school_class)
+    print(f"Класс {school_class['class']}: девочки {girls}, мальчики {boys}")
+    
+    
 
+print("______________________\n\nЗадание №5\n")
 
 # Задание 5
 # По информации о учениках разных классов нужно найти класс, в котором больше всего девочек и больше всего мальчиков
@@ -142,5 +155,42 @@ is_male = {
     'Олег': True,
     'Миша': True,
 }
-# ???
+def count_males_in_school(school_class):
+    count_girls = 0
+    count_boys = 0
+    for name in school_class['students']:
+        real_name = name['first_name']
+        if is_male[real_name]:
+            count_boys+=1
+        else:
+            count_girls+=1
+    return(count_boys,count_girls)
+    
+max_boys = []
+max_girls = []
+for school_class in school:
+    max_boys.append(boys)
+    max_girls.append(girls)
+if max_boys[0] > max_boys[1]:
+    print(f"Больше всего мальчиков в классе 2a")
+else:
+    print(f"Больше всего мальчиков в классе 3c")
+if max_girls[0] > max_girls[1]:
+    print(f"Больше всего девочек в классе 2a")
+else:
+    print(f"Больше всего девочек в классе 3c")
 
+
+'''
+^тупое решение.
+
+я могу найти наибольшее значение в списке мальчиков и девочек отдельно через
+
+max_value_boys = max(max_boys)
+max_index = max_boys.index(max_value)
+max_value_girls = max(max_girls)
+max_index = max_girls.index(max_value)
+
+
+но как мне подцепить и вывести название класса в print через найденный индекс в max_index?
+'''
